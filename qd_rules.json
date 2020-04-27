@@ -1,0 +1,95 @@
+[
+    {
+        "first":"female",
+        "second":"male",
+        "role_priority":["gender", "age", "city", "education"],
+        
+        "gender":{
+            "type":"cut",
+            "list_type":"1d",
+            "list":["male"]
+        },
+
+        "age":{
+            "type":"cut",
+            "list_type":"1d",
+            "list":[0,1,2,-1,3]
+        },
+
+        "city":{
+            "type":"cut",
+            "list_type":"1d",
+            "list":["same"]
+        },
+
+        "education":{
+            "type":"cut",
+            "list_type":"2d",
+            "list":[
+                {
+                    "self":"High School",
+                    "partner":["High School", "Graduation"]
+                },
+                {
+                    "self":"Graduation",
+                    "partner":["Graduation", "Post Graduation"]
+                },
+                {
+                    "self":"Post Graduation",
+                    "partner":["Post Graduation", "P.H.D"]
+                },
+                {
+                    "self":"P.H.D",
+                    "partner":["P.H.D","Post Graduation"]
+                }
+            ]
+        }
+    },
+
+    {
+        "first":"male",
+        "second":"female",
+        "role_priority":["gender", "age", "city", "education"],
+        
+        "gender":{
+            "type":"cut",
+            "list_type":"1d",
+            "list":["female"]
+        },
+
+        "age":{
+            "type":"cut",
+            "list_type":"1d",
+            "list":[0,-1,-2,1,2]
+        },
+
+        "city":{
+            "type":"cut",
+            "list_type":"1d",
+            "list":["same"]
+        },
+
+        "education":{
+            "type":"cut",
+            "list_type":"2d",
+            "list":[
+                {
+                    "self":"High School",
+                    "partner":["High School"]
+                },
+                {
+                    "self":"Graduation",
+                    "partner":["Graduation", "High School", "Post Graduation"]
+                },
+                {
+                    "self":"Post Graduation",
+                    "partner":["Post Graduation", "Graduation", "P.H.D"]
+                },
+                {
+                    "self":"P.H.D",
+                    "partner":["P.H.D","Post Graduation", "Graduation"]
+                }
+            ]
+        }
+    }
+]

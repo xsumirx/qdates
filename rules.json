@@ -1,37 +1,142 @@
-[
-    {
-        "first":"female",
-        "second":"male",
-        "role_priority":["gender", "age"],
-        
-        "gender":{
-            "type":"cut",
-            "list_type":"1d",
-            "list":["male"]
+{
+    "rules":[
+        {
+            "rule_name":"age",
+            "rule_description":"Compare the ages of candidate",
+            "rule_id":1,
+            "rule_data":[
+                {
+                    "r_self":"Male",
+                    "r_seek_string":[],
+                    "r_seek_float":[0.0, -1.0, -2.0, 1.0, -3.0]
+                },
+                
+                {
+                    "r_self":"Female",
+                    "r_seek_string":[],
+                    "r_seek_float":[0.0, 1.0, 2.0, 3.0, -1.0]
+                } 
+            ]
         },
 
-        "age":{
-            "type":"cut",
-            "list_type":"1d",
-            "list":[0,1,2,-1,3]
-        }
-    },
-
-    {
-        "first":"male",
-        "second":"female",
-        "role_priority":["gender", "age"],
-        
-        "gender":{
-            "type":"cut",
-            "list_type":"1d",
-            "list":["female"]
+        {
+            "rule_name":"gender",
+            "rule_description":"Match rule for the gender",
+            "rule_id":2,
+            "rule_data":[
+                {
+                    "r_self":"Female",
+                    "r_seek_float":[],
+                    "r_seek_string":["Male"]
+                },
+                {
+                    "r_self":"Male",
+                    "r_seek_float":[],
+                    "r_seek_string":["Female"]
+                }    
+            ]
         },
 
-        "age":{
-            "type":"cut",
-            "list_type":"1d",
-            "list":[0,-1,-2,1,2]
+        {
+            "rule_name":"education",
+            "rule_description":"match based on the education [male seeking female]",
+            "rule_id":3,
+            "rule_data":[
+                {
+                    "r_self":"High School",
+                    "r_seek_string":["High School"],
+                    "r_seek_float":[]
+                },
+                {
+                    "r_self":"Graduation",
+                    "r_seek_string":["Graduation", "High School", "Post Graduation"],
+                    "r_seek_float":[]
+                },
+                {
+                    "r_self":"Post Graduation",
+                    "r_seek_string":["Post Graduation", "Graduation", "P.H.D"],
+                    "r_seek_float":[]
+                },
+                {
+                    "r_self":"P.H.D",
+                    "r_seek_string":["P.H.D", "Post Graduation"],
+                    "r_seek_float":[]
+                }   
+            ]
+        },
+
+        {
+            "rule_name":"education",
+            "rule_description":"match based on the education [female seeking male]",
+            "rule_id":4,
+            "rule_data":[
+                {
+                    "r_self":"High School",
+                    "r_seek_string":["High School"],
+                    "r_seek_float":[]
+                },
+                {
+                    "r_self":"Graduation",
+                    "r_seek_string":["Graduation", "Post Graduation"],
+                    "r_seek_float":[]
+                },
+                {
+                    "r_self":"Post Graduation",
+                    "r_seek_string":["Post Graduation", "P.H.D", "Graduation"],
+                    "r_seek_float":[]
+                },
+                {
+                    "r_self":"P.H.D",
+                    "r_seek_string":["P.H.D", "Post Graduation"],
+                    "r_seek_float":[]
+                }   
+            ]
+        },
+
+        {
+            "rule_name":"verbal",
+            "rule_description":"Verbal skills match",
+            "rule_id":5,
+            "rule_data":[
+                {
+                    "r_self":"Poor",
+                    "r_seek_string":["Poor"],
+                    "r_seek_float":[]
+                },
+                {
+                    "r_self":"Average",
+                    "r_seek_string":["Average"],
+                    "r_seek_float":[]
+                },
+                {
+                    "r_self":"Good",
+                    "r_seek_string":["Good"],
+                    "r_seek_float":[]
+                },
+                {
+                    "r_self":"Excellent",
+                    "r_seek_string":["Excellent"],
+                    "r_seek_float":[]
+                }   
+            ]
         }
-    }
-]
+        
+    ],
+
+    "policy":[
+        {
+            "p_self":"Female",
+            "p_partner":"Male",
+            "p_rules":[1,2, 4, 5]
+        },
+
+        {
+            "p_self":"Male",
+            "p_partner":"Female",
+            "p_rules":[1,2, 3, 5]
+        }
+    ]
+}
+
+
+    

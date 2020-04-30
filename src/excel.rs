@@ -53,7 +53,7 @@ pub fn read<'a>(path:String) -> Result<(Vec<DocPerson>, Vec<String>),ExcelError>
             String, // Phone
             String, // City
             String, // Gender
-            u8,     // Age
+            f32,     // Age
             String, // Education
             String, // Profession
             String, // Verbal Ability
@@ -86,9 +86,9 @@ pub fn read<'a>(path:String) -> Result<(Vec<DocPerson>, Vec<String>),ExcelError>
                         email:email,
                         phone:phone,
                         profession:profession,
-                        age:age,
+                        age:(age as u64).to_string(),
                         gender:gender,
-                        response_rating:0,
+                        response_rating:String::from("0"),
                         city:city,
                         seeking:seeking,
                         verbal_ability:verbal_ability,

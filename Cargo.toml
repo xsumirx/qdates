@@ -19,3 +19,7 @@ calamine = "0.16.1"
 
 #JSON
 serde_json = "1.0"
+serde = "1.0.106"
+
+#Random
+rand = "0.7"
